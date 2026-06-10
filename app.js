@@ -59,6 +59,17 @@ class HistorialFinanciero{
     this.listaTransacciones = listaSinEliminado;
     return "Transacción eliminada con éxito";
   }
+  actualizarMonto(idTransaccion, nuevoMonto){
+    if(nuevoMonto <= 0){
+      return "Error: el monto debe ser mayor a cero";
+    }
+    const transaccionActualizar = this.buscarMovimiento(idTransaccion);
+    if(!transaccionActualizar){
+      return "Error: el movimiento no existe";
+    }
+    transaccionActualizar.monto = nuevoMonto;
+    return "Monto actualizado con exito"
+  }
 }
 
 const transaccion1 = new Transaccion ("t-001","Pago de Nómina", 2500.00, "ingreso","USD")
@@ -93,4 +104,6 @@ console.log(transacciones.buscarMovimiento("t-999"));
 console.log("Eliminar registro")
 console.log(transacciones.eliminarMovimiento("t-001"))
 console.log("imprimir reporte");
+console.log("Actualizar monto");
+console.log(transacciones.actualizarMonto("t-005", 85.00))
 transacciones.imprimirReporte();
