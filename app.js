@@ -18,10 +18,11 @@ class HistorialFinanciero{
   agregar(objetoTransaccion){
     const idExiste = this.buscarMovimiento(objetoTransaccion.id);
     if(idExiste){
-      return "Error el identificador se encuentra duplicado"
+      return "Error el identificador se encuentra duplicado";
     }
     objetoTransaccion.tipo = objetoTransaccion.tipo.toLowerCase();
-    this.listaTransacciones.push(objetoTransaccion)
+    this.listaTransacciones.push(objetoTransaccion);
+    return "Transaccion agregada con exito";
   }
   filtrarIngresos(){
     const listaIngresos = this.listaTransacciones.filter((elemento)=> elemento.tipo === "ingreso");
@@ -48,7 +49,16 @@ class HistorialFinanciero{
     this.listaTransacciones.forEach((elemento)=>{
       console.log(`id: ${elemento.id}, descripcion: ${elemento.descripcion}, monto: ${elemento.monto}, tipo: ${elemento.tipo}, divisa: ${elemento.moneda}`);
     });
-  } 
+  }
+  eliminarMovimiento(idTransaccion){
+    const idExiste = this.buscarMovimiento(idTransaccion);
+    if(!idExiste){
+      return "Error: El movimiento no existe";
+    }
+    const listaSinEliminado = this.listaTransacciones.filter((elemento)=> elemento.id != idTransaccion);
+    this.listaTransacciones = listaSinEliminado;
+    return "Transacción eliminada con éxito";
+  }
 }
 
 const transaccion1 = new Transaccion ("t-001","Pago de Nómina", 2500.00, "ingreso","USD")
@@ -80,5 +90,7 @@ console.log("buscar movimiento");
 console.log(transacciones.buscarMovimiento("t-003"));
 console.log("buscar movimiento indefinido")
 console.log(transacciones.buscarMovimiento("t-999"));
+console.log("Eliminar registro")
+console.log(transacciones.eliminarMovimiento("t-001"))
 console.log("imprimir reporte");
 transacciones.imprimirReporte();
