@@ -16,6 +16,11 @@ class HistorialFinanciero{
   };
 
   agregar(objetoTransaccion){
+    const idExiste = this.buscarMovimiento(objetoTransaccion.id);
+    if(idExiste){
+      return "Error el identificador se encuentra duplicado"
+    }
+    objetoTransaccion.tipo = objetoTransaccion.tipo.toLowerCase();
     this.listaTransacciones.push(objetoTransaccion)
   }
   filtrarIngresos(){
@@ -47,10 +52,12 @@ class HistorialFinanciero{
 }
 
 const transaccion1 = new Transaccion ("t-001","Pago de Nómina", 2500.00, "ingreso","USD")
-const transaccion2 = new Transaccion ("t-002", "Compra de Súper", 150.50, "gasto", "USD")
+const transaccion2 = new Transaccion ("t-002", "Compra de Súper", 150.50, "GASTO", "USD")
 const transaccion3 = new Transaccion ("t-003", "Suscripción Streaming", 15.99, "gasto", "USD")
 const transaccion4 = new Transaccion ("t-004", "Trabajo Freelance", 600.00, "ingreso", "USD")
 const transaccion5 = new Transaccion ("t-005","Cena Restaurante", 80.00, "gasto", "USD")
+const transaccion6 = new Transaccion ("t-003", "Gimnasio", 25.00, "gasto", "USD")
+
 
 const transacciones = new HistorialFinanciero()
 
@@ -59,6 +66,9 @@ transacciones.agregar(transaccion2)
 transacciones.agregar(transaccion3)
 transacciones.agregar(transaccion4)
 transacciones.agregar(transaccion5)
+
+console.log("Prueba error")
+console.log(transacciones.agregar(transaccion6))
 
 console.log("Filtrar ingresos");
 console.log(transacciones.filtrarIngresos());
