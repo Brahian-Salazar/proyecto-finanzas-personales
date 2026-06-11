@@ -44,7 +44,7 @@ export default class HistorialFinanciero{
     if(!idExiste){
       return "Error: El movimiento no existe";
     }
-    const listaSinEliminado = this.listaTransacciones.filter((elemento)=> elemento.id != idTransaccion);
+    const listaSinEliminado = this.listaTransacciones.filter((elemento)=> elemento.id !== idTransaccion);
     this.listaTransacciones = listaSinEliminado;
     return "Transacción eliminada con éxito";
   }
