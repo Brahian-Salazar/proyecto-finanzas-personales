@@ -35,6 +35,9 @@ export default class HistorialFinanciero{
   };
 
   imprimirReporte(){
+    if(this.listaTransacciones.length === 0){
+        return "No tienes ningun transaccion para realizar el reporte";
+    }
     this.listaTransacciones.forEach((elemento)=>{
       console.log(`id: ${elemento.id}, descripcion: ${elemento.descripcion}, monto: ${elemento.monto}, tipo: ${elemento.tipo}, divisa: ${elemento.moneda}`);
     });
@@ -58,5 +61,12 @@ export default class HistorialFinanciero{
     }
     transaccionActualizar.monto = nuevoMonto;
     return "Monto actualizado con exito"
+  }
+  vaciarHistorial(){
+    if(this.listaTransacciones.length === 0){
+        return "El historial se encuentra vacio";
+    }
+    this.listaTransacciones = [];
+    return "El historial fue vaciado correctamente"
   }
 }

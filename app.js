@@ -17,36 +17,45 @@ transacciones.agregar(transaccion4)
 transacciones.agregar(transaccion5)
 
 imprimirTitulo("PRUEBA — ID DUPLICADO");
-imprimirResultado(transacciones.agregar(transaccion6));
+imprimirResultado("PRUEBA — ID DUPLICADO",transacciones.agregar(transaccion6));
 
 imprimirTitulo("FILTRAR INGRESOS");
-imprimirResultado(transacciones.filtrarIngresos());
+imprimirResultado("FILTRAR INGRESOS",transacciones.filtrarIngresos());
 
 
 imprimirTitulo("FILTRAR GASTOS");
-imprimirResultado(transacciones.filtrarGastos());
+imprimirResultado("FILTRAR GASTOS",transacciones.filtrarGastos());
 
 
 imprimirTitulo("CALCULAR BALANCE");
-imprimirResultado(transacciones.calcularBalance());
+imprimirResultado("CALCULAR BALANCE", transacciones.calcularBalance());
 
 imprimirTitulo("BUSCAR MOVIMIENTO EXISTENTE");
-imprimirResultado(transacciones.buscarMovimiento("t-003"));
+imprimirResultado("BUSCAR MOVIMIENTO EXISTENTE", transacciones.buscarMovimiento("t-003"));
 
 
 imprimirTitulo("BUSCAR MOVIMIENTO INEXISTENTE");
-imprimirResultado(transacciones.buscarMovimiento("t-999"));
+imprimirResultado("BUSCAR MOVIMIENTO INEXISTENTE", transacciones.buscarMovimiento("t-999"));
 
 
 imprimirTitulo("ELIMINAR MOVIMIENTO");
-imprimirResultado(transacciones.eliminarMovimiento("t-001"));
+imprimirResultado("ELIMINAR MOVIMIENTO", transacciones.eliminarMovimiento("t-001"));
 
 imprimirTitulo("ACTUALIZAR MONTO");
-imprimirResultado(transacciones.actualizarMonto("t-005", 85.00));
+imprimirResultado("ACTUALIZAR MONTO", transacciones.actualizarMonto("t-005", 85.00));
 
+imprimirTitulo("REPORTE COMPLETO");
+transacciones.imprimirReporte();
+
+imprimirTitulo("VACIAR HISTORIAL CON TRANSACCIONES EXISTENTES")
+imprimirResultado("VACIAR HISTORIAL CON TRANSACCIONES EXISTENTES", transacciones.vaciarHistorial())
+
+imprimirTitulo("VACIAR HISTORIAL CON TRANSACCIONES NO EXISTENTES")
+imprimirResultado("VACIAR HISTORIAL CON TRANSACCIONES NO EXISTENTES", transacciones.vaciarHistorial())
 
 imprimirTitulo("REPORTE COMPLETO");
 transacciones.imprimirReporte();
 
 console.log(separador);
 console.log("Fin pruebas");
+
